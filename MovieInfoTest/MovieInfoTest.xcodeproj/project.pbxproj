@@ -75,32 +75,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ED8C160E26D0C2260092572F /* utils */ = {
+		ED8C160E26D0C2260092572F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				ED8C160C26D0C1A00092572F /* ApiUtils.swift */,
 				ED8C160F26D0C24D0092572F /* CommonUtils.swift */,
 				ED8C161126D0C65E0092572F /* Constants.swift */,
 			);
-			path = utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		ED8C161326D0CAAF0092572F /* model */ = {
+		ED8C161326D0CAAF0092572F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				ED8C161A26D0D0640092572F /* MovieListSummaryInfo.swift */,
 				ED8C161C26D0D06E0092572F /* MovieDetailInfo.swift */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		ED8C161426D0CABF0092572F /* request */ = {
+		ED8C161426D0CABF0092572F /* Request */ = {
 			isa = PBXGroup;
 			children = (
 				ED8C161626D0CB630092572F /* MovieListRequest.swift */,
 				ED8C161826D0CB6D0092572F /* MovieDetailRequest.swift */,
 			);
-			path = request;
+			path = Request;
 			sourceTree = "<group>";
 		};
 		EDC76E8926D0BAC800396AEE = {
@@ -125,8 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				EDC76EA926D0BD9500396AEE /* Api */,
-				ED8C161326D0CAAF0092572F /* model */,
-				ED8C160E26D0C2260092572F /* utils */,
+				ED8C161326D0CAAF0092572F /* Model */,
+				ED8C160E26D0C2260092572F /* Utils */,
 				EDC76E9526D0BAC800396AEE /* AppDelegate.swift */,
 				EDC76E9726D0BAC800396AEE /* SceneDelegate.swift */,
 				EDC76E9926D0BAC800396AEE /* ViewController.swift */,
@@ -141,7 +141,7 @@
 		EDC76EA926D0BD9500396AEE /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				ED8C161426D0CABF0092572F /* request */,
+				ED8C161426D0CABF0092572F /* Request */,
 				EDC76EAA26D0BDB000396AEE /* MovieInfoApi.swift */,
 			);
 			path = Api;
