@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED8C160D26D0C1A00092572F /* ApiUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C160C26D0C1A00092572F /* ApiUtils.swift */; };
+		ED8C161026D0C24D0092572F /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C160F26D0C24D0092572F /* CommonUtils.swift */; };
 		EDC76E9626D0BAC800396AEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC76E9526D0BAC800396AEE /* AppDelegate.swift */; };
 		EDC76E9826D0BAC800396AEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC76E9726D0BAC800396AEE /* SceneDelegate.swift */; };
 		EDC76E9A26D0BAC800396AEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC76E9926D0BAC800396AEE /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED8C160C26D0C1A00092572F /* ApiUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUtils.swift; sourceTree = "<group>"; };
+		ED8C160F26D0C24D0092572F /* CommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
 		EDC76E9226D0BAC800396AEE /* MovieInfoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieInfoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC76E9526D0BAC800396AEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDC76E9726D0BAC800396AEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED8C160E26D0C2260092572F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C160F26D0C24D0092572F /* CommonUtils.swift */,
+				ED8C161126D0C65E0092572F /* Constants.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		EDC76E8926D0BAC800396AEE = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +69,8 @@
 		EDC76E9426D0BAC800396AEE /* MovieInfoTest */ = {
 			isa = PBXGroup;
 			children = (
+				ED8C160E26D0C2260092572F /* utils */,
+				EDC76EA926D0BD9500396AEE /* Api */,
 				EDC76E9526D0BAC800396AEE /* AppDelegate.swift */,
 				EDC76E9726D0BAC800396AEE /* SceneDelegate.swift */,
 				EDC76E9926D0BAC800396AEE /* ViewController.swift */,
@@ -65,6 +80,15 @@
 				EDC76EA326D0BACD00396AEE /* Info.plist */,
 			);
 			path = MovieInfoTest;
+			sourceTree = "<group>";
+		};
+		EDC76EA926D0BD9500396AEE /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C160C26D0C1A00092572F /* ApiUtils.swift */,
+				EDC76EAA26D0BDB000396AEE /* MovieInfoApi.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,14 +156,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		32AE817138A69280F71400C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieInfoTest/Pods-MovieInfoTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieInfoTest/Pods-MovieInfoTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieInfoTest/Pods-MovieInfoTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62359FF2D5D1AC96776E31FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovieInfoTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EDC76E8E26D0BAC800396AEE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EDC76E9A26D0BAC800396AEE /* ViewController.swift in Sources */,
+				ED8C160D26D0C1A00092572F /* ApiUtils.swift in Sources */,
 				EDC76E9626D0BAC800396AEE /* AppDelegate.swift in Sources */,
 				EDC76E9826D0BAC800396AEE /* SceneDelegate.swift in Sources */,
+				ED8C161226D0C65E0092572F /* Constants.swift in Sources */,
+				ED8C161026D0C24D0092572F /* CommonUtils.swift in Sources */,
+				EDC76EAB26D0BDB000396AEE /* MovieInfoApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
