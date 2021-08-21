@@ -1,10 +1,10 @@
 import Foundation
 
 struct MovieListRequest: Codable {
-    var apiKey:String
-    var primaryReleaseDate:String
-    var sortBy:String
-    var page:Int
+    let apiKey:String
+    let primaryReleaseDate:String
+    let sortBy:String
+    let page:Int
     
     enum CodingKeys: String, CodingKey {
         case apiKey = "api_key"
