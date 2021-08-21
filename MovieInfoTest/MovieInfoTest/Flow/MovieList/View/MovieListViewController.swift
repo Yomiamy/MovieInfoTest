@@ -17,10 +17,15 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.initView()
         self.initData()
         self.bindingData()
         
         self.viewModel.fetchMovieList()
+    }
+    
+    func initView() {
+        self.navigationItem.title = "Movie List"
     }
     
     func initData() {
