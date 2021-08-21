@@ -1,7 +1,7 @@
 import Foundation
 
-// MARK: - MovieListSummaryInfo
-struct MovieListSummaryInfo: Codable {
+// MARK: - MovieSummaryInfo
+struct MovieSummaryInfo: Codable {
     let page: Int
     let results: [MovieListItemInfo]
     let totalPages, totalResults: Int
