@@ -23,6 +23,11 @@ struct MovieListItemInfo: Codable {
     let overview: String
     let popularity: Double
     let posterPath: String?
+    var imageUrl:String {
+        if let posterPath = self.posterPath { return posterPath }
+        if let backdropPath = self.backdropPath { return backdropPath }
+        return ""
+    }
     let releaseDate:String
     let title: String
     let video: Bool
