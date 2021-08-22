@@ -16,8 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="j7A-sA-529" userLabel="sort_segment_controller">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Release Date"/>
+                                    <segment title="Popularity"/>
+                                    <segment title="Vote Count"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSortByChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="YNF-yM-rOt"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W58-at-8Ph" userLabel="movie_list_table_view">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieListItemCell" rowHeight="147" id="GCO-QQ-dbS" userLabel="movie_summary_cell" customClass="MovieListItemCell" customModule="MovieInfoTest" customModuleProvider="target">
@@ -79,15 +90,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="W58-at-8Ph" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3Ku-Yu-tMt"/>
                             <constraint firstItem="W58-at-8Ph" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4NK-uj-d9Q"/>
                             <constraint firstAttribute="bottom" secondItem="W58-at-8Ph" secondAttribute="bottom" id="7ho-OA-dvr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j7A-sA-529" secondAttribute="trailing" id="9hb-5f-jgh"/>
+                            <constraint firstItem="j7A-sA-529" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WSY-ph-raV"/>
+                            <constraint firstItem="j7A-sA-529" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ff8-fg-cbu"/>
+                            <constraint firstItem="W58-at-8Ph" firstAttribute="top" secondItem="j7A-sA-529" secondAttribute="bottom" id="g8s-TZ-Wxe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W58-at-8Ph" secondAttribute="trailing" id="sXX-2l-BK2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zuw-gn-UAP"/>
                     <connections>
                         <outlet property="movieListTableView" destination="W58-at-8Ph" id="SGy-Cx-0Ra"/>
+                        <outlet property="sortBySegmentController" destination="j7A-sA-529" id="Ky8-IZ-3Ro"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

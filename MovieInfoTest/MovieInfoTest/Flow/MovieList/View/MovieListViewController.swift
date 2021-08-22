@@ -8,12 +8,12 @@ class MovieListViewController: UIViewController {
 
     // MARK:- Property
     @IBOutlet weak var movieListTableView: UITableView!
+    @IBOutlet weak var sortBySegmentController: UISegmentedControl!
     private var refreshControl:UIRefreshControl!
     
     private var viewModel:MovieListViewModel!
     private var disposeBag:DisposeBag = DisposeBag()
-    
-    var sortBy:String = "release_date.desc"
+    private var sortByIndex:Int = 0
     
     // MARK:- Init
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class MovieListViewController: UIViewController {
         self.initData()
         self.bindingData()
         
-        self.viewModel.fetchMovieList(sortBy: self.sortBy)
+        self.viewModel.fetchMovieList(sortByIndex: self.sortByIndex)
     }
     
     func initView() {
@@ -66,17 +66,25 @@ class MovieListViewController: UIViewController {
                     
                     return indexPath.row == totalCount - 1
                 }) ?? false
+                
                 if isReachLast {
-                    self.viewModel.fetchMovieList(sortBy: self.sortBy)
+                    self.viewModel.fetchMovieList(sortByIndex: self.sortByIndex)
                 }
             }
             .disposed(by: self.disposeBag)
     }
     
+    // MARK:- pullToRefresh
     @objc func pullToRefresh() {
         // 開始刷新動畫
         self.refreshControl.beginRefreshing()
-        self.viewModel.resetAndFetchMovieList(sortBy: self.sortBy)
+        self.viewModel.resetAndFetchMovieList(sortByIndex: self.sortByIndex)
     }
-
+    
+    // MARK:- onSortByChange
+    @IBAction func onSortByChange(_ sender: Any) {
+        self.sortByIndex = self.sortBySegmentController.selectedSegmentIndex
+        
+        self.viewModel.resetAndFetchMovieList(sortByIndex: self.sortByIndex)
+    }
 }
