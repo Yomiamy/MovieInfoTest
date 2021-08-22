@@ -22,6 +22,7 @@ class MovieListItemCell: UITableViewCell {
         self.posterImageView.kf.setImage(with: URL(string: imgUrl))
         self.voteForLabel.text = voteFor
         
+        self.setSelected(false, animated: true)
     }
 
 }
