@@ -5,6 +5,7 @@ class MovieDetailTableViewController: UITableViewController {
 
     var id:String!
     
+    var movieId:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -30,6 +30,17 @@ class MovieListViewController: UIViewController {
         self.navigationItem.title = "Movie List"
         self.refreshControl = UIRefreshControl()
         
+        self.movieListTableView
+            .rx
+            .modelSelected(MovieListItemInfo.self)
+            .subscribe { controlEvent in
+                guard let movieId = controlEvent.element?.id else {
+                    return
+                }
+                
+                self.selectedMovieId = movieId
+                self.performSegue(withIdentifier: Constants.ROUTE_SHOW_MOVIE_DETAIL, sender: self)
+            }.disposed(by: self.disposeBag)
         self.movieListTableView.addSubview(self.refreshControl)
         self.refreshControl.addTarget(self, action: #selector(pullToRefresh), for: UIControlEvents.valueChanged)
     }
