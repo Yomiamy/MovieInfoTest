@@ -8,4 +8,5 @@ class Constants {
     static let IMG_LARGE_URL_PREFIX:String = "https://image.tmdb.org/t/p/w500/"
     
     static let RELEASE_DATE = "2016-12-31"
+    static let ROUTE_SHOW_MOVIE_DETAIL = "show_movie_detail"
 }
