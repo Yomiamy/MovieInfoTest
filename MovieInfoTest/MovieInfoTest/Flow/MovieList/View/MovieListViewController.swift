@@ -22,7 +22,7 @@ class MovieListViewController: UIViewController {
         self.initData()
         self.bindingData()
         
-        self.viewModel.fetchMovieList()
+        self.viewModel.fetchMovieList(sortBy: self.sortBy)
     }
     
     func initView() {
@@ -64,7 +64,7 @@ class MovieListViewController: UIViewController {
     @objc func pullToRefresh() {
         // 開始刷新動畫
         self.refreshControl.beginRefreshing()
-        self.viewModel.fetchMovieList(sortBy: self.sortBy, page: self.page)
+        self.viewModel.resetAndFetchMovieList(sortBy: self.sortBy)
     }
 
 }

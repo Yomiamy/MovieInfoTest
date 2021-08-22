@@ -19,7 +19,11 @@ class MovieListViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    func fetchMovieList() {
-        self.model.fetchMovieList(date: "2016-12-31", sortType: "release_date.desc", page: 1)
+    func fetchMovieList(sortBy:String) {
+        self.model.fetchMovieList(sortBy: sortBy)
+    }
+    
+    func resetAndFetchMovieList(sortBy:String) {
+        self.model.resetAndFetchMovieList(sortBy: sortBy)
     }
 }

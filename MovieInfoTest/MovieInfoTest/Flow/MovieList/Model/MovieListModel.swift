@@ -7,6 +7,7 @@ class MovieListModel {
     var movieListItemInfos:BehaviorSubject<[MovieListItemInfo]> = BehaviorSubject(value: [])
     
     func fetchMovieList(date:String, sortType:String, page:Int) {
+    func fetchMovieList(sortBy:String) {
         let req:MovieListRequest = MovieListRequest(
             apiKey: Constants.API_KEY,
             primaryReleaseDate: date,
