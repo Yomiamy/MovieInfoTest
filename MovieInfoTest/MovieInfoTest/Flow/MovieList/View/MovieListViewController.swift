@@ -12,7 +12,8 @@ class MovieListViewController: UIViewController {
     
     private var viewModel:MovieListViewModel!
     private var disposeBag:DisposeBag = DisposeBag()
-    private var movieListItemInfos:BehaviorSubject<[MovieListItemInfo]> = BehaviorSubject(value: [])
+    
+    var sortBy:String = "release_date.desc"
     
     // MARK:- Init
     override func viewDidLoad() {
@@ -56,7 +57,18 @@ class MovieListViewController: UIViewController {
                 }
             })
             .bind(to: self.movieListTableView.rx.items(cellIdentifier: MovieListViewController.CELL_ID, cellType: MovieListItemCell.self)) { (index, movieListItemInfo, cell) in
+                
                 cell.setData(movieListItemInfo: movieListItemInfo)
+                
+                // Check whether or not contain last item in visible rows
+                let isReachLast = self.movieListTableView.indexPathsForVisibleRows?.contains(where: { indexPath in
+                    let totalCount = (try? self.viewModel.movieListItemInfos.value().count) ?? 0
+                    
+                    return indexPath.row == totalCount - 1
+                }) ?? false
+                if isReachLast {
+                    self.viewModel.fetchMovieList(sortBy: self.sortBy)
+                }
             }
             .disposed(by: self.disposeBag)
     }
