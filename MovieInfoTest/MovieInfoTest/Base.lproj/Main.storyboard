@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieListItemCell" rowHeight="147" id="GCO-QQ-dbS" userLabel="movie_list_item_cell" customClass="MovieListItemCell" customModule="MovieInfoTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieListItemCell" rowHeight="147" id="GCO-QQ-dbS" userLabel="movie_list_item_cell" customClass="MovieListItemCell" customModule="MovieInfoTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GCO-QQ-dbS" id="IUn-ll-7d2">
@@ -131,16 +131,17 @@
                     <connections>
                         <outlet property="movieListTableView" destination="W58-at-8Ph" id="SGy-Cx-0Ra"/>
                         <outlet property="sortBySegmentController" destination="j7A-sA-529" id="Ky8-IZ-3Ro"/>
+                        <segue destination="EYa-Wp-bu8" kind="show" identifier="show_movie_detail" id="1Sp-0l-n2z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1028.985507246377" y="46.875"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Movie Detail Table View Controller-->
         <scene sceneID="6oo-xv-r5R">
             <objects>
-                <tableViewController id="EYa-Wp-bu8" sceneMemberID="viewController">
+                <tableViewController id="EYa-Wp-bu8" customClass="MovieDetailTableViewController" customModule="MovieInfoTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x4f-Ze-IvE" userLabel="movie_detail_table_view">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,15 +260,16 @@
                             <outlet property="delegate" destination="EYa-Wp-bu8" id="nda-mU-Ld3"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="elD-1i-YYc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4f-lb-Zx4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2163.768115942029" y="49.553571428571423"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Mo-->
         <scene sceneID="hZ5-bV-t8D">
             <objects>
-                <navigationController id="gfA-31-gAx" sceneMemberID="viewController">
+                <navigationController id="gfA-31-gAx" customClass="Mo" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="20z-FM-AEk">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
