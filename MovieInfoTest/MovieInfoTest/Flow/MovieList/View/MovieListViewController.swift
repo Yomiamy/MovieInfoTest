@@ -41,7 +41,19 @@ class MovieListViewController: UIViewController {
         self.viewModel
             .movieListItemInfos
             .do(onNext: { _ in
-                self.refreshControl.endRefreshing()
+                if self.refreshControl.isRefreshing {
+                    // 使用 UIView.animate 彈性效果，並且更改 TableView 的 ContentOffset 使其位移
+                    UIView.animate(withDuration: 1,
+                                   delay: 0,
+                                   usingSpringWithDamping: 0.7,
+                                   initialSpringVelocity: 1,
+                                   options: .curveEaseIn,
+                    animations: {
+                        self.movieListTableView.contentOffset = CGPoint(x: 0, y: -self.refreshControl.bounds.height)
+                    }) { _ in
+                        self.refreshControl.endRefreshing()
+                    }
+                }
             })
             .bind(to: self.movieListTableView.rx.items(cellIdentifier: MovieListViewController.CELL_ID, cellType: MovieListItemCell.self)) { (index, movieListItemInfo, cell) in
                 cell.setData(movieListItemInfo: movieListItemInfo)
@@ -52,19 +64,7 @@ class MovieListViewController: UIViewController {
     @objc func pullToRefresh() {
         // 開始刷新動畫
         self.refreshControl.beginRefreshing()
-        
-        // 使用 UIView.animate 彈性效果，並且更改 TableView 的 ContentOffset 使其位移
-        // 動畫結束之後使用 loadData()
-        UIView.animate(withDuration: 1,
-                       delay: 0,
-                       usingSpringWithDamping: 0.7,
-                       initialSpringVelocity: 1,
-                       options: .curveEaseIn,
-        animations: {
-            self.movieListTableView.contentOffset = CGPoint(x: 0, y: -self.refreshControl.bounds.height)
-        }) { _ in
-            self.viewModel.fetchMovieList()
-        }
+        self.viewModel.fetchMovieList(sortBy: self.sortBy, page: self.page)
     }
 
 }
