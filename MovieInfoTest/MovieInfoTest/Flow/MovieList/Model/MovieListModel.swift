@@ -13,7 +13,7 @@ class MovieListModel {
         
         let req:MovieListRequest = MovieListRequest(
             apiKey: Constants.API_KEY,
-            primaryReleaseDate: "2016-12-31",
+            primaryReleaseDate: Constants.RELEASE_DATE,
             sortBy: sortBy,
             page: page
         )

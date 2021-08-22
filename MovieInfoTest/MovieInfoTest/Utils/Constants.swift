@@ -6,4 +6,6 @@ class Constants {
     
     static let IMG_SMALL_URL_PREFIX:String = "https://image.tmdb.org/t/p/w200/"
     static let IMG_LARGE_URL_PREFIX:String = "https://image.tmdb.org/t/p/w500/"
+    
+    static let RELEASE_DATE = "2016-12-31"
 }
