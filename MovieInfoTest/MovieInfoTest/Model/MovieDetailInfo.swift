@@ -16,6 +16,9 @@ struct MovieDetailInfo: Codable {
     }
     let homepage: String
     let id: Int
+    var bookMovieUrl:String {
+        "\(Constants.BOOK_MOVIE_URL_PREFIX)\(self.id)"
+    }
     let imdbID:String?
     let originalLanguage:String
     let originalTitle:String
