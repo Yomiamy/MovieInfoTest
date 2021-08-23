@@ -8,6 +8,12 @@ struct MovieDetailInfo: Codable {
     let belongsToCollection: BelongsToCollectionInfo?
     let budget: Int
     let genres: [GenreInfo]
+    var genresStr:String {
+        guard self.genres.count > 0 else {
+            return "N/A"
+        }
+        return self.genres.map { genresInfo in genresInfo.name }.joined(separator: "/")
+    }
     let homepage: String
     let id: Int
     let imdbID:String?

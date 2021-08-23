@@ -49,6 +49,7 @@ class MovieDetailTableViewController: UITableViewController {
                 
                 self.synopsisLabel.text = movieDetailInfo.overview
                 self.languageLabel.text = movieDetailInfo.spokenLanguagesStr
+                self.genresLabel.text = movieDetailInfo.genresStr
         }.disposed(by: self.disposeBag)
 
     }
