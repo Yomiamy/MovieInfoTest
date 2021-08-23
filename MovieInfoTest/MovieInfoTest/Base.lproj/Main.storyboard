@@ -149,15 +149,15 @@
                         <sections>
                             <tableViewSection id="ZVS-jT-Kby">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="170" id="qzB-q3-Y3a" userLabel="image_cell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="170"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="210" id="qzB-q3-Y3a" userLabel="image_cell">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qzB-q3-Y3a" id="p7U-rF-HFR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pnh-ic-OzI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -169,7 +169,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="614" id="gWN-JY-yf2" userLabel="summary_info_cell">
-                                        <rect key="frame" x="0.0" y="194.5" width="414" height="614"/>
+                                        <rect key="frame" x="0.0" y="234.5" width="414" height="614"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gWN-JY-yf2" id="8Ts-EF-ruk">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="614"/>
@@ -217,6 +217,9 @@
                                                             <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onBookClick:" destination="EYa-Wp-bu8" eventType="touchUpInside" id="lHJ-bN-7Jh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -256,6 +259,7 @@
                         <outlet property="posterImageView" destination="Pnh-ic-OzI" id="8pt-ds-QqV"/>
                         <outlet property="releaseDataLabel" destination="aKf-7c-D3e" id="b3W-aE-vao"/>
                         <outlet property="synopsisLabel" destination="eZb-4s-81b" id="847-GR-pzo"/>
+                        <segue destination="zMN-3K-EiL" kind="show" identifier="show_web_view" id="iaa-Ew-4Bh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4f-lb-Zx4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -278,8 +282,124 @@
             </objects>
             <point key="canvasLocation" x="-155" y="47"/>
         </scene>
+        <!--WebView Controller-->
+        <scene sceneID="uPh-Cn-kgo">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="zMN-3K-EiL" userLabel="WebView Controller" customClass="WebViewController" customModule="MovieInfoTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W3A-NE-RFB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3I-1N-wsN">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G12-yX-D5H">
+                                <rect key="frame" x="0.0" y="88" width="414" height="4"/>
+                            </progressView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwY-SU-rog" userLabel="bottom_func_bar">
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-Uf-jRe" userLabel="prev_page_btn">
+                                        <rect key="frame" x="8" y="0.0" width="62" height="62"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="height" multiplier="1:1" id="oJN-Qa-PQC"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_blue_left"/>
+                                        <connections>
+                                            <action selector="onPrevPageBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="sAh-KD-Lce"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c12-LR-wRW" userLabel="next_page_btn">
+                                        <rect key="frame" x="120" y="0.0" width="62" height="62"/>
+                                        <state key="normal" image="ic_blue_right"/>
+                                        <connections>
+                                            <action selector="onNextPageBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="60b-6r-NOw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZL-Hd-cgv" userLabel="share_btn">
+                                        <rect key="frame" x="232" y="0.0" width="62" height="62"/>
+                                        <state key="normal" image="ic_share"/>
+                                        <connections>
+                                            <action selector="onShareBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="jCh-HO-Faz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4G-T9-5dp" userLabel="safari_btn">
+                                        <rect key="frame" x="344" y="0.0" width="62" height="62"/>
+                                        <state key="normal" image="ic_safari"/>
+                                        <connections>
+                                            <action selector="onSafariBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="fec-Zn-n8T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="j4G-T9-5dp" firstAttribute="top" secondItem="Aea-Uf-jRe" secondAttribute="top" id="4aG-x3-Abq"/>
+                                    <constraint firstItem="j4G-T9-5dp" firstAttribute="leading" secondItem="yZL-Hd-cgv" secondAttribute="trailing" constant="50" id="8TC-DS-HeA"/>
+                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="width" id="GdP-b8-L8j"/>
+                                    <constraint firstItem="Aea-Uf-jRe" firstAttribute="top" secondItem="cwY-SU-rog" secondAttribute="top" id="JaK-M5-gaP"/>
+                                    <constraint firstAttribute="height" constant="83" id="M84-wg-ivr"/>
+                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="leading" secondItem="c12-LR-wRW" secondAttribute="trailing" constant="50" id="Nex-fK-yIc"/>
+                                    <constraint firstItem="c12-LR-wRW" firstAttribute="leading" secondItem="Aea-Uf-jRe" secondAttribute="trailing" constant="50" id="WQh-B9-8w9"/>
+                                    <constraint firstItem="c12-LR-wRW" firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="width" id="Xic-6F-klS"/>
+                                    <constraint firstItem="Aea-Uf-jRe" firstAttribute="leading" secondItem="cwY-SU-rog" secondAttribute="leading" constant="8" id="a3o-es-oaV"/>
+                                    <constraint firstItem="j4G-T9-5dp" firstAttribute="height" secondItem="Aea-Uf-jRe" secondAttribute="height" id="fy2-hh-dOj"/>
+                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="top" secondItem="Aea-Uf-jRe" secondAttribute="top" id="haw-pa-qNd"/>
+                                    <constraint firstItem="c12-LR-wRW" firstAttribute="top" secondItem="Aea-Uf-jRe" secondAttribute="top" id="kp2-xQ-bGR"/>
+                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="height" secondItem="Aea-Uf-jRe" secondAttribute="height" id="ln5-iK-3rb"/>
+                                    <constraint firstAttribute="trailing" secondItem="j4G-T9-5dp" secondAttribute="trailing" constant="8" id="m4P-t5-Amw"/>
+                                    <constraint firstItem="j4G-T9-5dp" firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="width" id="oWt-G1-ucf"/>
+                                    <constraint firstItem="c12-LR-wRW" firstAttribute="height" secondItem="Aea-Uf-jRe" secondAttribute="height" id="qHw-T9-l1A"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WQL-fP-KgG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cwY-SU-rog" firstAttribute="bottom" secondItem="W3A-NE-RFB" secondAttribute="bottom" id="Ei5-HX-KQm"/>
+                            <constraint firstItem="H3I-1N-wsN" firstAttribute="top" secondItem="WQL-fP-KgG" secondAttribute="top" id="FzW-MH-UC9"/>
+                            <constraint firstItem="H3I-1N-wsN" firstAttribute="leading" secondItem="WQL-fP-KgG" secondAttribute="leading" id="Hkd-Iy-dbE"/>
+                            <constraint firstItem="cwY-SU-rog" firstAttribute="leading" secondItem="WQL-fP-KgG" secondAttribute="leading" id="JUb-9R-zjz"/>
+                            <constraint firstItem="G12-yX-D5H" firstAttribute="leading" secondItem="WQL-fP-KgG" secondAttribute="leading" id="ccN-sO-xbQ"/>
+                            <constraint firstItem="G12-yX-D5H" firstAttribute="top" secondItem="WQL-fP-KgG" secondAttribute="top" id="fkN-rX-S1b"/>
+                            <constraint firstItem="WQL-fP-KgG" firstAttribute="trailing" secondItem="G12-yX-D5H" secondAttribute="trailing" id="gCF-Vn-bLW"/>
+                            <constraint firstItem="cwY-SU-rog" firstAttribute="top" secondItem="H3I-1N-wsN" secondAttribute="bottom" id="olS-1f-Ve3"/>
+                            <constraint firstItem="WQL-fP-KgG" firstAttribute="trailing" secondItem="H3I-1N-wsN" secondAttribute="trailing" id="rzw-8S-MM0"/>
+                            <constraint firstItem="WQL-fP-KgG" firstAttribute="trailing" secondItem="cwY-SU-rog" secondAttribute="trailing" id="xHT-wh-aTi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bNd-gl-KAb">
+                        <barButtonItem key="rightBarButtonItem" image="ic_refresh" id="026-4Y-D65" userLabel="reload">
+                            <connections>
+                                <action selector="onReloadBtnClicked:" destination="zMN-3K-EiL" id="ZqQ-7w-rJd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomFuncBarConstraintH" destination="M84-wg-ivr" id="ahz-PS-z5X"/>
+                        <outlet property="nextPageBtn" destination="c12-LR-wRW" id="LQe-kK-xNb"/>
+                        <outlet property="prevPageBtn" destination="Aea-Uf-jRe" id="CRz-jB-niz"/>
+                        <outlet property="progressView" destination="G12-yX-D5H" id="8we-y4-a4g"/>
+                        <outlet property="safariBtn" destination="j4G-T9-5dp" id="h6O-Fd-LbJ"/>
+                        <outlet property="shareBtn" destination="yZL-Hd-cgv" id="IHp-Ee-XXh"/>
+                        <outlet property="webview" destination="H3I-1N-wsN" id="Ebe-Sv-aLK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b37-O1-dCA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3426" y="54"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ic_blue_left" width="44" height="44"/>
+        <image name="ic_blue_right" width="24" height="24"/>
+        <image name="ic_refresh" width="28" height="28"/>
+        <image name="ic_safari" width="44" height="44"/>
+        <image name="ic_share" width="44" height="44"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

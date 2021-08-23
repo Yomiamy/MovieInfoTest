@@ -4,19 +4,20 @@ import Kingfisher
 
 class MovieDetailTableViewController: UITableViewController {
 
+    // MARK:- Property
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var releaseDataLabel: UILabel!
-    
 
     private var disposeBag:DisposeBag = DisposeBag()
     private var viewModel:MovieDetailViewModel!
-    var movieDetailInfo:PublishSubject<MovieDetailInfo> = PublishSubject()
+    var movieDetailInfo:MovieDetailInfo?
     var movieListItemInfo:MovieListItemInfo!
     
+    // MARK:- Init Flow
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,11 +48,25 @@ class MovieDetailTableViewController: UITableViewController {
                     return
                 }
                 
+                self.movieDetailInfo = movieDetailInfo
                 self.synopsisLabel.text = movieDetailInfo.overview
                 self.languageLabel.text = movieDetailInfo.spokenLanguagesStr
                 self.genresLabel.text = movieDetailInfo.genresStr
         }.disposed(by: self.disposeBag)
 
     }
-
+    
+    // MARK:- Prepare Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let webviewVc = segue.destination as? WebViewController,
+           let movieDetailInfo = self.movieDetailInfo {
+            webviewVc.titleStr = movieDetailInfo.title
+            webviewVc.urlStr = movieDetailInfo.bookMovieUrl
+        }
+    }
+    
+    // MARK:- onBookClick
+    @IBAction func onBookClick(_ sender: Any) {
+        self.performSegue(withIdentifier: Constants.ROUTE_SHOW_WEB_VIEW, sender: self)
+    }
 }
