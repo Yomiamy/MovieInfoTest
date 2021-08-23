@@ -12,7 +12,6 @@ class MovieListItemCell: UITableViewCell {
     func setData(movieListItemInfo:MovieListItemInfo) {
         let releaseDate = movieListItemInfo.releaseDate
         let imgUrl = movieListItemInfo.imageUrl
-        let url = "\(Constants.IMG_SMALL_URL_PREFIX)\(imgUrl)"
         let title = movieListItemInfo.title
         let popularity = movieListItemInfo.popularity
         let voteFor = "\(movieListItemInfo.voteCount)"
@@ -20,8 +19,10 @@ class MovieListItemCell: UITableViewCell {
         self.releaseDateLabel.text = releaseDate
         self.titleLabel.text = title
         self.popularityLabel.text = "\(popularity)"
-        self.posterImageView.kf.setImage(with: URL(string: url))
+        self.posterImageView.kf.setImage(with: URL(string: imgUrl))
         self.voteForLabel.text = voteFor
+        
+        self.setSelected(false, animated: true)
     }
 
 }

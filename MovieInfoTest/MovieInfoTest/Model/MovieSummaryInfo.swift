@@ -24,9 +24,14 @@ struct MovieListItemInfo: Codable {
     let popularity: Double
     let posterPath: String?
     var imageUrl:String {
-        if let posterPath = self.posterPath { return posterPath }
-        if let backdropPath = self.backdropPath { return backdropPath }
-        return ""
+        var urlPath = ""
+        if let posterPath = self.posterPath {
+            urlPath = posterPath
+        } else if let backdropPath = self.backdropPath {
+            urlPath = backdropPath
+        }
+        
+        return "\(Constants.IMG_SMALL_URL_PREFIX)\(urlPath)"
     }
     let releaseDate:String
     let title: String

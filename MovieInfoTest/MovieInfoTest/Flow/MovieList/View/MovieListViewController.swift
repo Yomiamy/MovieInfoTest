@@ -14,8 +14,9 @@ class MovieListViewController: UIViewController {
     private var viewModel:MovieListViewModel!
     private var disposeBag:DisposeBag = DisposeBag()
     private var sortByIndex:Int = 0
+    private var selectedMovieListItemInfo:MovieListItemInfo?
     
-    // MARK:- Init
+    // MARK:- Init Flow
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +31,17 @@ class MovieListViewController: UIViewController {
         self.navigationItem.title = "Movie List"
         self.refreshControl = UIRefreshControl()
         
+        self.movieListTableView
+            .rx
+            .modelSelected(MovieListItemInfo.self)
+            .subscribe { controlEvent in
+                guard let movieListItemInfo = controlEvent.element else {
+                    return
+                }
+                
+                self.selectedMovieListItemInfo = movieListItemInfo
+                self.performSegue(withIdentifier: Constants.ROUTE_SHOW_MOVIE_DETAIL, sender: self)
+            }.disposed(by: self.disposeBag)
         self.movieListTableView.addSubview(self.refreshControl)
         self.refreshControl.addTarget(self, action: #selector(pullToRefresh), for: UIControlEvents.valueChanged)
     }
@@ -72,6 +84,14 @@ class MovieListViewController: UIViewController {
                 }
             }
             .disposed(by: self.disposeBag)
+    }
+    
+    // MARK:- Prepare Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let movieDetailVc = segue.destination as? MovieDetailTableViewController,
+           let selectedMovieListItemInfo = self.selectedMovieListItemInfo {
+            movieDetailVc.movieListItemInfo = selectedMovieListItemInfo
+        }
     }
     
     // MARK:- pullToRefresh

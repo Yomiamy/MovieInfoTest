@@ -1,15 +1,25 @@
 import Foundation
 
+
 // MARK: - MovieDetailInfo
 struct MovieDetailInfo: Codable {
     let adult: Bool
-    let backdropPath: String
-    let belongsToCollection: BelongsToCollectionInfo
+    let backdropPath: String?
+    let belongsToCollection: BelongsToCollectionInfo?
     let budget: Int
     let genres: [GenreInfo]
+    var genresStr:String {
+        guard self.genres.count > 0 else {
+            return "N/A"
+        }
+        return self.genres.map { genresInfo in genresInfo.name }.joined(separator: "/")
+    }
     let homepage: String
     let id: Int
-    let imdbID, originalLanguage, originalTitle, overview: String
+    let imdbID:String?
+    let originalLanguage:String
+    let originalTitle:String
+    let overview: String
     let popularity: Double
     let posterPath: String
     let productionCompanies: [ProductionCompanyInfo]
@@ -17,6 +27,12 @@ struct MovieDetailInfo: Codable {
     let releaseDate: String
     let revenue, runtime: Int
     let spokenLanguages: [SpokenLanguageInfo]
+    var spokenLanguagesStr:String {
+        guard self.spokenLanguages.count > 0 else {
+            return "N/A"
+        }
+        return self.spokenLanguages.map { spokenLanguageInfo in spokenLanguageInfo.name }.joined(separator: "/")
+    }
     let status, tagline, title: String
     let video: Bool
     let voteAverage: Double
@@ -66,7 +82,7 @@ struct GenreInfo: Codable {
 // MARK: - ProductionCompanyInfo
 struct ProductionCompanyInfo: Codable {
     let id: Int
-    let logoPath:String
+    let logoPath:String?
     let name:String
     let originCountry: String
 
