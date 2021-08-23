@@ -7,7 +7,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     @IBOutlet weak var webview: WKWebView!
     @IBOutlet weak var prevPageBtn: UIButton!
     @IBOutlet weak var nextPageBtn: UIButton!
-    @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var safariBtn: UIButton!
     @IBOutlet weak var bottomFuncBarConstraintH: NSLayoutConstraint!
     @IBOutlet weak var progressView: UIProgressView!

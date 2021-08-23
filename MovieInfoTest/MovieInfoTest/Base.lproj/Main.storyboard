@@ -305,7 +305,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="83"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-Uf-jRe" userLabel="prev_page_btn">
-                                        <rect key="frame" x="8" y="0.0" width="62" height="62"/>
+                                        <rect key="frame" x="8" y="0.0" width="66" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="height" multiplier="1:1" id="oJN-Qa-PQC"/>
                                         </constraints>
@@ -315,21 +315,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c12-LR-wRW" userLabel="next_page_btn">
-                                        <rect key="frame" x="120" y="0.0" width="62" height="62"/>
+                                        <rect key="frame" x="174" y="0.0" width="66" height="66"/>
                                         <state key="normal" image="ic_blue_right"/>
                                         <connections>
                                             <action selector="onNextPageBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="60b-6r-NOw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZL-Hd-cgv" userLabel="share_btn">
-                                        <rect key="frame" x="232" y="0.0" width="62" height="62"/>
-                                        <state key="normal" image="ic_share"/>
-                                        <connections>
-                                            <action selector="onShareBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="jCh-HO-Faz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4G-T9-5dp" userLabel="safari_btn">
-                                        <rect key="frame" x="344" y="0.0" width="62" height="62"/>
+                                        <rect key="frame" x="340" y="0.0" width="66" height="66"/>
                                         <state key="normal" image="ic_safari"/>
                                         <connections>
                                             <action selector="onSafariBtnClicked:" destination="zMN-3K-EiL" eventType="touchUpInside" id="fec-Zn-n8T"/>
@@ -339,18 +332,14 @@
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="j4G-T9-5dp" firstAttribute="top" secondItem="Aea-Uf-jRe" secondAttribute="top" id="4aG-x3-Abq"/>
-                                    <constraint firstItem="j4G-T9-5dp" firstAttribute="leading" secondItem="yZL-Hd-cgv" secondAttribute="trailing" constant="50" id="8TC-DS-HeA"/>
-                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="width" id="GdP-b8-L8j"/>
                                     <constraint firstItem="Aea-Uf-jRe" firstAttribute="top" secondItem="cwY-SU-rog" secondAttribute="top" id="JaK-M5-gaP"/>
                                     <constraint firstAttribute="height" constant="83" id="M84-wg-ivr"/>
-                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="leading" secondItem="c12-LR-wRW" secondAttribute="trailing" constant="50" id="Nex-fK-yIc"/>
-                                    <constraint firstItem="c12-LR-wRW" firstAttribute="leading" secondItem="Aea-Uf-jRe" secondAttribute="trailing" constant="50" id="WQh-B9-8w9"/>
+                                    <constraint firstItem="c12-LR-wRW" firstAttribute="leading" secondItem="Aea-Uf-jRe" secondAttribute="trailing" constant="100" id="WQh-B9-8w9"/>
                                     <constraint firstItem="c12-LR-wRW" firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="width" id="Xic-6F-klS"/>
                                     <constraint firstItem="Aea-Uf-jRe" firstAttribute="leading" secondItem="cwY-SU-rog" secondAttribute="leading" constant="8" id="a3o-es-oaV"/>
                                     <constraint firstItem="j4G-T9-5dp" firstAttribute="height" secondItem="Aea-Uf-jRe" secondAttribute="height" id="fy2-hh-dOj"/>
-                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="top" secondItem="Aea-Uf-jRe" secondAttribute="top" id="haw-pa-qNd"/>
+                                    <constraint firstItem="j4G-T9-5dp" firstAttribute="leading" secondItem="c12-LR-wRW" secondAttribute="trailing" constant="100" id="gCF-7A-tpK"/>
                                     <constraint firstItem="c12-LR-wRW" firstAttribute="top" secondItem="Aea-Uf-jRe" secondAttribute="top" id="kp2-xQ-bGR"/>
-                                    <constraint firstItem="yZL-Hd-cgv" firstAttribute="height" secondItem="Aea-Uf-jRe" secondAttribute="height" id="ln5-iK-3rb"/>
                                     <constraint firstAttribute="trailing" secondItem="j4G-T9-5dp" secondAttribute="trailing" constant="8" id="m4P-t5-Amw"/>
                                     <constraint firstItem="j4G-T9-5dp" firstAttribute="width" secondItem="Aea-Uf-jRe" secondAttribute="width" id="oWt-G1-ucf"/>
                                     <constraint firstItem="c12-LR-wRW" firstAttribute="height" secondItem="Aea-Uf-jRe" secondAttribute="height" id="qHw-T9-l1A"/>
@@ -385,7 +374,6 @@
                         <outlet property="prevPageBtn" destination="Aea-Uf-jRe" id="CRz-jB-niz"/>
                         <outlet property="progressView" destination="G12-yX-D5H" id="8we-y4-a4g"/>
                         <outlet property="safariBtn" destination="j4G-T9-5dp" id="h6O-Fd-LbJ"/>
-                        <outlet property="shareBtn" destination="yZL-Hd-cgv" id="IHp-Ee-XXh"/>
                         <outlet property="webview" destination="H3I-1N-wsN" id="Ebe-Sv-aLK"/>
                     </connections>
                 </viewController>
@@ -399,7 +387,6 @@
         <image name="ic_blue_right" width="24" height="24"/>
         <image name="ic_refresh" width="28" height="28"/>
         <image name="ic_safari" width="44" height="44"/>
-        <image name="ic_share" width="44" height="44"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
