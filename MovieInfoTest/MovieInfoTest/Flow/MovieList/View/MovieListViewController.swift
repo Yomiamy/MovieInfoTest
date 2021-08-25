@@ -5,6 +5,7 @@ import RxCocoa
 class MovieListViewController: UIViewController {
     
     private static let CELL_ID = "MovieListItemCell"
+    private static let NAV_TITLE = "Movie List"
 
     // MARK:- Property
     @IBOutlet weak var movieListTableView: UITableView!
@@ -24,11 +25,11 @@ class MovieListViewController: UIViewController {
         self.initData()
         self.bindingData()
         
-        self.viewModel.fetchMovieList(sortByIndex: self.sortByIndex)
+        self.fetchMovieList()
     }
     
     func initView() {
-        self.navigationItem.title = "Movie List"
+        self.navigationItem.title = MovieListViewController.NAV_TITLE
         self.refreshControl = UIRefreshControl()
         
         self.movieListTableView
@@ -54,8 +55,10 @@ class MovieListViewController: UIViewController {
         self.viewModel
             .movieListItemInfos
             .do(onNext: { _ in
+                self.closeLoading()
+                
                 if self.refreshControl.isRefreshing {
-                    // 使用 UIView.animate 彈性效果，並且更改 TableView 的 ContentOffset 使其位移
+                    // Reset the offset of TableView
                     UIView.animate(withDuration: 1,
                                    delay: 0,
                                    usingSpringWithDamping: 0.7,
@@ -67,6 +70,11 @@ class MovieListViewController: UIViewController {
                         self.refreshControl.endRefreshing()
                     }
                 }
+            }, onError: { error in
+                print("Error is \(error.localizedDescription)")
+                
+                self.closeLoading()
+                self.refreshControl.endRefreshing()
             })
             .bind(to: self.movieListTableView.rx.items(cellIdentifier: MovieListViewController.CELL_ID, cellType: MovieListItemCell.self)) { (index, movieListItemInfo, cell) in
                 
@@ -80,7 +88,7 @@ class MovieListViewController: UIViewController {
                 }) ?? false
                 
                 if isReachLast {
-                    self.viewModel.fetchMovieList(sortByIndex: self.sortByIndex)
+                    self.fetchMovieList(isNeedLoading: false)
                 }
             }
             .disposed(by: self.disposeBag)
@@ -94,9 +102,18 @@ class MovieListViewController: UIViewController {
         }
     }
     
+    // MARK:- fetchMovieList
+    private func fetchMovieList(isNeedLoading:Bool = true) {
+        if isNeedLoading {
+            self.showLoading()
+        }
+        
+        self.viewModel.fetchMovieList(sortByIndex: self.sortByIndex)
+    }
+    
     // MARK:- pullToRefresh
     @objc func pullToRefresh() {
-        // 開始刷新動畫
+        // Start Refreshing
         self.refreshControl.beginRefreshing()
         self.viewModel.resetAndFetchMovieList(sortByIndex: self.sortByIndex)
     }
