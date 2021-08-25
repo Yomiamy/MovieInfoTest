@@ -25,6 +25,7 @@ class MovieDetailTableViewController: UITableViewController {
         self.initData()
         self.bindingData()
         
+        self.showLoading()
         self.viewModel.fetchMovieDetail(id: self.movieListItemInfo.id)
     }
     
@@ -43,6 +44,12 @@ class MovieDetailTableViewController: UITableViewController {
     func bindingData() {
         self.viewModel
             .movieDetailInfo
+            .do(onNext: { _ in
+                self.closeLoading()
+            }, onError: { error in
+                print("Error is \(error.localizedDescription)")
+                self.closeLoading()
+            })
             .subscribe { controlEvent in
                 guard let movieDetailInfo = controlEvent.element else {
                     return
