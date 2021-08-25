@@ -5,7 +5,6 @@ class MovieListViewModel {
     
     // MARK:- Property
     
-    private weak var view:MovieListViewController!
     private var model:MovieListModel!
     private var disposeBag:DisposeBag = DisposeBag()
     
@@ -13,8 +12,7 @@ class MovieListViewModel {
     
     // MARK:- Init Flow
     
-    init(view:MovieListViewController) {
-        self.view = view
+    init() {
         self.model = MovieListModel()
         
         self.bindingData()

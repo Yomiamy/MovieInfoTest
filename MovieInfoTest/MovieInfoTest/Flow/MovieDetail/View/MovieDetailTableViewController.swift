@@ -38,7 +38,7 @@ class MovieDetailTableViewController: UITableViewController {
     }
     
     func initData() {
-        self.viewModel = MovieDetailViewModel(view: self)
+        self.viewModel = MovieDetailViewModel()
     }
     
     func bindingData() {

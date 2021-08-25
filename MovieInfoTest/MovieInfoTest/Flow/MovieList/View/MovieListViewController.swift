@@ -48,7 +48,7 @@ class MovieListViewController: UIViewController {
     }
     
     func initData() {
-        self.viewModel = MovieListViewModel(view: self)
+        self.viewModel = MovieListViewModel()
     }
     
     func bindingData() {
