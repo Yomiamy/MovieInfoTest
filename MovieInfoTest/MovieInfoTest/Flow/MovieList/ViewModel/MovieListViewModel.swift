@@ -3,34 +3,43 @@ import RxSwift
 
 class MovieListViewModel {
     
-    private weak var view:MovieListViewController!
+    // MARK:- Property
+    
     private var model:MovieListModel!
     private var disposeBag:DisposeBag = DisposeBag()
     
     var movieListItemInfos:BehaviorSubject<[MovieListItemInfo]> = BehaviorSubject(value: [])
     
-    init(view:MovieListViewController) {
-        self.view = view
+    // MARK:- Init Flow
+    
+    init() {
         self.model = MovieListModel()
         
+        self.bindingData()
+    }
+    
+    private func bindingData() {
         self.model
             .movieListItemInfos
             .bind(to: self.movieListItemInfos)
             .disposed(by: self.disposeBag)
     }
     
+    // MARK:- fetchMovieList
     func fetchMovieList(sortByIndex:Int) {
         let sortBy = self.sortByIndexMappingToStr(sortByIndex: sortByIndex)
         
         self.model.fetchMovieList(sortBy: sortBy)
     }
     
+    // MARK:- resetAndFetchMovieList
     func resetAndFetchMovieList(sortByIndex:Int) {
         let sortBy = self.sortByIndexMappingToStr(sortByIndex: sortByIndex)
         
         self.model.resetAndFetchMovieList(sortBy: sortBy)
     }
     
+    // MARK:- sortByIndexMappingToStr
     private func sortByIndexMappingToStr(sortByIndex:Int) -> String {
         switch sortByIndex {
         case 0:

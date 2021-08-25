@@ -3,12 +3,14 @@ import Kingfisher
 
 class MovieListItemCell: UITableViewCell {
     
+    // MARK:- Property
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
     @IBOutlet weak var voteForLabel: UILabel!
     
+    // MARK:- setData
     func setData(movieListItemInfo:MovieListItemInfo) {
         let releaseDate = movieListItemInfo.releaseDate
         let imgUrl = movieListItemInfo.imageUrl

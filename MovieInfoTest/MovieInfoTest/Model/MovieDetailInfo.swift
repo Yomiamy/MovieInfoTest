@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - MovieDetailInfo
 struct MovieDetailInfo: Codable {
     let adult: Bool
@@ -24,7 +23,7 @@ struct MovieDetailInfo: Codable {
     let originalTitle:String
     let overview: String
     let popularity: Double
-    let posterPath: String
+    let posterPath: String?
     let productionCompanies: [ProductionCompanyInfo]
     let productionCountries: [ProductionCountryInfo]
     let releaseDate: String
