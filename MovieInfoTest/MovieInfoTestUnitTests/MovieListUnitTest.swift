@@ -45,27 +45,24 @@ class MovieListUnitTests: XCTestCase {
     }
     
     private func testFetMovieList(sortBy:String) {
+        var result:[MovieListItemInfo] = []
         var errorMsg:String? = nil
         let promise = expectation(description: "API success")
         
         do {
             try XCTSkipUnless(self.monitor.currentPath.status == .satisfied, "Network connectivity needed for this test.")
+            
+            self.movieListModel.movieListItemInfos.skip(1).subscribe { movieListInfos in
+                result = movieListInfos
+                promise.fulfill()
+            } onError: { error in
+                errorMsg = error.localizedDescription
+                promise.fulfill()
+            }.disposed(by: self.disposeBag)
         } catch {
-            errorMsg = error.localizedDescription
+            errorMsg = "No Network Error"
             promise.fulfill()
         }
-        
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        var result:[MovieListItemInfo] = []
-        
-        self.movieListModel.movieListItemInfos.skip(1).subscribe { movieListInfos in
-            result = movieListInfos
-            promise.fulfill()
-        } onError: { error in
-            errorMsg = error.localizedDescription
-            promise.fulfill()
-        }.disposed(by: self.disposeBag)
         
         self.movieListModel.fetchMovieList(sortBy: sortBy)
         wait(for: [promise], timeout: 5)

@@ -22,29 +22,26 @@ class MovieDetailUnitTests: XCTestCase {
     }
 
     func testFetMovieDetail() throws {
+        var result:MovieDetailInfo? = nil
         var errorMsg:String? = nil
         let promise = expectation(description: "API success")
         
         do {
             try XCTSkipUnless(self.monitor.currentPath.status == .satisfied, "Network connectivity needed for this test.")
+            
+            self.movieDetail.movieDetailInfo.subscribe { movieDetailInfo in
+                result = movieDetailInfo
+                
+                promise.fulfill()
+            } onError: { error in
+                errorMsg = error.localizedDescription
+                promise.fulfill()
+            }.disposed(by: self.disposeBag)
         } catch {
-            errorMsg = error.localizedDescription
+            errorMsg = "No Network Error"
             promise.fulfill()
         }
-        
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        var result:MovieDetailInfo? = nil
-        
-        self.movieDetail.movieDetailInfo.subscribe { movieDetailInfo in
-            result = movieDetailInfo
-            
-            promise.fulfill()
-        } onError: { error in
-            errorMsg = error.localizedDescription
-            promise.fulfill()
-        }.disposed(by: self.disposeBag)
-        
+    
         self.movieDetail.fetchMovieDetail(id: 328111)
         wait(for: [promise], timeout: 5)
         
