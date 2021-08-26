@@ -10,6 +10,7 @@
 		22DBCAA36D4F5CBD8446A7B8 /* Pods_MovieInfoTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929E9B708010274CFD1036B /* Pods_MovieInfoTest.framework */; };
 		ED08CDBB26D56B2E0084EC37 /* UIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED08CDBA26D56B2E0084EC37 /* UIViewController_Extension.swift */; };
 		ED08CDC526D610200084EC37 /* MovieInfoTestUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED08CDC426D610200084EC37 /* MovieInfoTestUnitTests.swift */; };
+		ED08CDC526D610200084EC37 /* MovieListUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED08CDC426D610200084EC37 /* MovieListUnitTest.swift */; };
 		ED8C160D26D0C1A00092572F /* ApiUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C160C26D0C1A00092572F /* ApiUtils.swift */; };
 		ED8C161026D0C24D0092572F /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C160F26D0C24D0092572F /* CommonUtils.swift */; };
 		ED8C161226D0C65E0092572F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C161126D0C65E0092572F /* Constants.swift */; };
@@ -50,7 +51,7 @@
 		D2228D9C6BB25F0DA4B17202 /* Pods-MovieInfoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieInfoTest.release.xcconfig"; path = "Target Support Files/Pods-MovieInfoTest/Pods-MovieInfoTest.release.xcconfig"; sourceTree = "<group>"; };
 		ED08CDBA26D56B2E0084EC37 /* UIViewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController_Extension.swift; sourceTree = "<group>"; };
 		ED08CDC226D610200084EC37 /* MovieInfoTestUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieInfoTestUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED08CDC426D610200084EC37 /* MovieInfoTestUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoTestUnitTests.swift; sourceTree = "<group>"; };
+		ED08CDC426D610200084EC37 /* MovieListUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListUnitTest.swift; sourceTree = "<group>"; };
 		ED08CDC626D610200084EC37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8C160C26D0C1A00092572F /* ApiUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUtils.swift; sourceTree = "<group>"; };
 		ED8C160F26D0C24D0092572F /* CommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				ED08CDC426D610200084EC37 /* MovieInfoTestUnitTests.swift */,
+				ED08CDC426D610200084EC37 /* MovieListUnitTest.swift */,
 				ED08CDC626D610200084EC37 /* Info.plist */,
 			);
 			path = MovieInfoTestUnitTests;
@@ -446,7 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED08CDC526D610200084EC37 /* MovieInfoTestUnitTests.swift in Sources */,
+				ED08CDC526D610200084EC37 /* MovieListUnitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
