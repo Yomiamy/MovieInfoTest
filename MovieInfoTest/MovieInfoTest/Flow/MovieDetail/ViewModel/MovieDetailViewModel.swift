@@ -11,8 +11,8 @@ class MovieDetailViewModel {
     var movieDetailInfo:PublishSubject<MovieDetailInfo> = PublishSubject()
     
     // MARK:- Init Flow
-    init() {
-        self.model = MovieDetailModel()
+    init(model:MovieDetailModel) {
+        self.model = model
         
         self.bindingData()
     }

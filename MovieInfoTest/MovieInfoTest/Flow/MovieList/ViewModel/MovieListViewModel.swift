@@ -12,8 +12,8 @@ class MovieListViewModel {
     
     // MARK:- Init Flow
     
-    init() {
-        self.model = MovieListModel()
+    init(model:MovieListModel) {
+        self.model = model
         
         self.bindingData()
     }
