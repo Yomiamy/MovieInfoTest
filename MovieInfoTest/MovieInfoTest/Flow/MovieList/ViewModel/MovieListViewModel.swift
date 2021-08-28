@@ -1,5 +1,6 @@
 import Foundation
 import RxSwift
+import RxCocoa
 
 class MovieListViewModel {
     
@@ -8,7 +9,7 @@ class MovieListViewModel {
     private var model:MovieListModel!
     private var disposeBag:DisposeBag = DisposeBag()
     
-    var movieListItemInfos:BehaviorSubject<[MovieListItemInfo]> = BehaviorSubject(value: [])
+    var movieListItemInfos:BehaviorRelay<[MovieListItemInfo]> = BehaviorRelay(value: [])
     
     // MARK:- Init Flow
     

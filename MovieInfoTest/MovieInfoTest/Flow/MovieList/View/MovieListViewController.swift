@@ -82,7 +82,7 @@ class MovieListViewController: UIViewController {
                 
                 // Check whether or not contain last item in visible rows
                 let isReachLast = self.movieListTableView.indexPathsForVisibleRows?.contains(where: { indexPath in
-                    let totalCount = (try? self.viewModel.movieListItemInfos.value().count) ?? 0
+                    let totalCount = self.viewModel.movieListItemInfos.value.count
                     
                     return indexPath.row == totalCount - 1
                 }) ?? false

@@ -1,11 +1,12 @@
 import Foundation
 import RxSwift
+import RxCocoa
 
 class MovieDetailModel {
     
     private var disposeBag:DisposeBag = DisposeBag()
     
-    var movieDetailInfo:PublishSubject<MovieDetailInfo> = PublishSubject()
+    var movieDetailInfo:PublishRelay<MovieDetailInfo> = PublishRelay()
     
     func fetchMovieDetail(id:Int) {
         let id:String = "\(id)"
@@ -15,7 +16,7 @@ class MovieDetailModel {
         
         ApiUtils.requestApi(apiType: MovieInfoApi.MovieDetail(id, ApiUtils.getBodyParams(obj: req)),
                                     responseType: MovieDetailInfo.self) { data in
-            self.movieDetailInfo.onNext(data)
+            self.movieDetailInfo.accept(data)
         } onFail: { error in
             print("Error")
         } onFinally: {

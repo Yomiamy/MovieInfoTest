@@ -1,10 +1,11 @@
 import Foundation
 import RxSwift
+import RxCocoa
 
 class MovieListModel {
     
     private var disposeBag:DisposeBag = DisposeBag()
-    var movieListItemInfos:BehaviorSubject<[MovieListItemInfo]> = BehaviorSubject(value: [])
+    var movieListItemInfos:BehaviorRelay<[MovieListItemInfo]> = BehaviorRelay(value: [])
     
     private var page:Int = 0
     
@@ -23,10 +24,10 @@ class MovieListModel {
             
             // If new movieListItemInfos is
             if newMovieListItemInfos.count > 0 {
-                var currentMovieListItemInfos = (try? self.movieListItemInfos.value()) ?? []
+                var currentMovieListItemInfos = self.movieListItemInfos.value
                 
                 currentMovieListItemInfos.append(contentsOf: newMovieListItemInfos)
-                self.movieListItemInfos.onNext(currentMovieListItemInfos)
+                self.movieListItemInfos.accept(currentMovieListItemInfos)
             } else {
                 // Reset the page to previous
                 self.page -= 1
@@ -46,7 +47,7 @@ class MovieListModel {
         self.page = 0
         
         // Notify to reset list
-        self.movieListItemInfos.onNext([])
+        self.movieListItemInfos.accept([])
         // Fetch in init page index
         self.fetchMovieList(sortBy: sortBy)
     }
